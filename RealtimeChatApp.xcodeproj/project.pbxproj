@@ -7,19 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2344D2D22989501B000A088A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2344D2D12989501B000A088A /* Kingfisher */; };
+		234FEDBF2987190A00A32466 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 234FEDBE2987190A00A32466 /* GoogleService-Info.plist */; };
+		234FEDC229871A3600A32466 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 234FEDC129871A3600A32466 /* FirebaseAuth */; };
+		234FEDC429871A3600A32466 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 234FEDC329871A3600A32466 /* FirebaseFirestore */; };
+		234FEDC629871A3600A32466 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 234FEDC529871A3600A32466 /* FirebaseStorage */; };
+		234FEDC82987204300A32466 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234FEDC72987204300A32466 /* AuthViewModel.swift */; };
+		234FEDCA2987264600A32466 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234FEDC92987264600A32466 /* Home.swift */; };
+		234FEDCC298727EC00A32466 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234FEDCB298727EC00A32466 /* BigButton.swift */; };
 		237B4FC129852A1B00BE2D2B /* RealtimeChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B4FC029852A1B00BE2D2B /* RealtimeChatAppApp.swift */; };
 		237B4FC329852A1B00BE2D2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B4FC229852A1B00BE2D2B /* ContentView.swift */; };
 		237B4FC529852A1D00BE2D2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237B4FC429852A1D00BE2D2B /* Assets.xcassets */; };
 		237B4FC929852A1D00BE2D2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237B4FC829852A1D00BE2D2B /* Preview Assets.xcassets */; };
+		237B4FD329852AF700BE2D2B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B4FD229852AF700BE2D2B /* Login.swift */; };
+		237B4FD529852B4600BE2D2B /* Registiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B4FD429852B4600BE2D2B /* Registiration.swift */; };
+		237B4FD829852B7C00BE2D2B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B4FD729852B7C00BE2D2B /* CustomTextField.swift */; };
+		237B4FDA29852B9300BE2D2B /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B4FD929852B9300BE2D2B /* CustomInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		234FEDBE2987190A00A32466 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		234FEDC72987204300A32466 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		234FEDC92987264600A32466 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		234FEDCB298727EC00A32466 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		237B4FBD29852A1B00BE2D2B /* RealtimeChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealtimeChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		237B4FC029852A1B00BE2D2B /* RealtimeChatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeChatAppApp.swift; sourceTree = "<group>"; };
 		237B4FC229852A1B00BE2D2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		237B4FC429852A1D00BE2D2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		237B4FC629852A1D00BE2D2B /* RealtimeChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RealtimeChatApp.entitlements; sourceTree = "<group>"; };
 		237B4FC829852A1D00BE2D2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		237B4FD229852AF700BE2D2B /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		237B4FD429852B4600BE2D2B /* Registiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registiration.swift; sourceTree = "<group>"; };
+		237B4FD729852B7C00BE2D2B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		237B4FD929852B9300BE2D2B /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +47,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2344D2D22989501B000A088A /* Kingfisher in Frameworks */,
+				234FEDC229871A3600A32466 /* FirebaseAuth in Frameworks */,
+				234FEDC429871A3600A32466 /* FirebaseFirestore in Frameworks */,
+				234FEDC629871A3600A32466 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,9 +76,14 @@
 		237B4FBF29852A1B00BE2D2B /* RealtimeChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				237B4FD629852B7100BE2D2B /* Utils */,
+				237B4FD129852AE700BE2D2B /* Model */,
+				237B4FD029852AE500BE2D2B /* ViewModel */,
+				237B4FCF29852AE300BE2D2B /* View */,
 				237B4FC029852A1B00BE2D2B /* RealtimeChatAppApp.swift */,
 				237B4FC229852A1B00BE2D2B /* ContentView.swift */,
 				237B4FC429852A1D00BE2D2B /* Assets.xcassets */,
+				234FEDBE2987190A00A32466 /* GoogleService-Info.plist */,
 				237B4FC629852A1D00BE2D2B /* RealtimeChatApp.entitlements */,
 				237B4FC729852A1D00BE2D2B /* Preview Content */,
 			);
@@ -67,6 +96,41 @@
 				237B4FC829852A1D00BE2D2B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		237B4FCF29852AE300BE2D2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				237B4FD229852AF700BE2D2B /* Login.swift */,
+				237B4FD429852B4600BE2D2B /* Registiration.swift */,
+				234FEDC92987264600A32466 /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		237B4FD029852AE500BE2D2B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				234FEDC72987204300A32466 /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		237B4FD129852AE700BE2D2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		237B4FD629852B7100BE2D2B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				237B4FD729852B7C00BE2D2B /* CustomTextField.swift */,
+				237B4FD929852B9300BE2D2B /* CustomInputView.swift */,
+				234FEDCB298727EC00A32466 /* BigButton.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +149,12 @@
 			dependencies = (
 			);
 			name = RealtimeChatApp;
+			packageProductDependencies = (
+				234FEDC129871A3600A32466 /* FirebaseAuth */,
+				234FEDC329871A3600A32466 /* FirebaseFirestore */,
+				234FEDC529871A3600A32466 /* FirebaseStorage */,
+				2344D2D12989501B000A088A /* Kingfisher */,
+			);
 			productName = RealtimeChatApp;
 			productReference = 237B4FBD29852A1B00BE2D2B /* RealtimeChatApp.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +183,10 @@
 				Base,
 			);
 			mainGroup = 237B4FB429852A1B00BE2D2B;
+			packageReferences = (
+				234FEDC029871A3600A32466 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2344D2D02989501B000A088A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 237B4FBE29852A1B00BE2D2B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,6 +203,7 @@
 			files = (
 				237B4FC929852A1D00BE2D2B /* Preview Assets.xcassets in Resources */,
 				237B4FC529852A1D00BE2D2B /* Assets.xcassets in Resources */,
+				234FEDBF2987190A00A32466 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +214,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237B4FD329852AF700BE2D2B /* Login.swift in Sources */,
 				237B4FC329852A1B00BE2D2B /* ContentView.swift in Sources */,
+				237B4FDA29852B9300BE2D2B /* CustomInputView.swift in Sources */,
+				234FEDC82987204300A32466 /* AuthViewModel.swift in Sources */,
+				237B4FD529852B4600BE2D2B /* Registiration.swift in Sources */,
 				237B4FC129852A1B00BE2D2B /* RealtimeChatAppApp.swift in Sources */,
+				234FEDCA2987264600A32466 /* Home.swift in Sources */,
+				237B4FD829852B7C00BE2D2B /* CustomTextField.swift in Sources */,
+				234FEDCC298727EC00A32466 /* BigButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,8 +359,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -315,8 +397,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -354,6 +436,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2344D2D02989501B000A088A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		234FEDC029871A3600A32466 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2344D2D12989501B000A088A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2344D2D02989501B000A088A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		234FEDC129871A3600A32466 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234FEDC029871A3600A32466 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		234FEDC329871A3600A32466 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234FEDC029871A3600A32466 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		234FEDC529871A3600A32466 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234FEDC029871A3600A32466 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 237B4FB529852A1B00BE2D2B /* Project object */;
 }
