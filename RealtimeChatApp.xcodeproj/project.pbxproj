@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2344D2D22989501B000A088A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2344D2D12989501B000A088A /* Kingfisher */; };
+		234628FF2990229B00FA524F /* MainMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234628FE2990229B00FA524F /* MainMessagesView.swift */; };
 		234FEDBF2987190A00A32466 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 234FEDBE2987190A00A32466 /* GoogleService-Info.plist */; };
 		234FEDC229871A3600A32466 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 234FEDC129871A3600A32466 /* FirebaseAuth */; };
 		234FEDC429871A3600A32466 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 234FEDC329871A3600A32466 /* FirebaseFirestore */; };
@@ -23,9 +24,12 @@
 		237B4FD529852B4600BE2D2B /* Registiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B4FD429852B4600BE2D2B /* Registiration.swift */; };
 		237B4FD829852B7C00BE2D2B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B4FD729852B7C00BE2D2B /* CustomTextField.swift */; };
 		237B4FDA29852B9300BE2D2B /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B4FD929852B9300BE2D2B /* CustomInputView.swift */; };
+		238D2D6C298A8ED300491440 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238D2D6B298A8ED300491440 /* OnboardingView.swift */; };
+		238D2D6E298A920A00491440 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238D2D6D298A920A00491440 /* NavigationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		234628FE2990229B00FA524F /* MainMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMessagesView.swift; sourceTree = "<group>"; };
 		234FEDBE2987190A00A32466 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		234FEDC72987204300A32466 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		234FEDC92987264600A32466 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		237B4FD429852B4600BE2D2B /* Registiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registiration.swift; sourceTree = "<group>"; };
 		237B4FD729852B7C00BE2D2B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		237B4FD929852B9300BE2D2B /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
+		238D2D6B298A8ED300491440 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		238D2D6D298A920A00491440 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,8 @@
 				237B4FD229852AF700BE2D2B /* Login.swift */,
 				237B4FD429852B4600BE2D2B /* Registiration.swift */,
 				234FEDC92987264600A32466 /* Home.swift */,
+				238D2D6B298A8ED300491440 /* OnboardingView.swift */,
+				234628FE2990229B00FA524F /* MainMessagesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -112,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				234FEDC72987204300A32466 /* AuthViewModel.swift */,
+				238D2D6D298A920A00491440 /* NavigationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -215,8 +224,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				237B4FD329852AF700BE2D2B /* Login.swift in Sources */,
+				234628FF2990229B00FA524F /* MainMessagesView.swift in Sources */,
 				237B4FC329852A1B00BE2D2B /* ContentView.swift in Sources */,
 				237B4FDA29852B9300BE2D2B /* CustomInputView.swift in Sources */,
+				238D2D6E298A920A00491440 /* NavigationViewModel.swift in Sources */,
+				238D2D6C298A8ED300491440 /* OnboardingView.swift in Sources */,
 				234FEDC82987204300A32466 /* AuthViewModel.swift in Sources */,
 				237B4FD529852B4600BE2D2B /* Registiration.swift in Sources */,
 				237B4FC129852A1B00BE2D2B /* RealtimeChatAppApp.swift in Sources */,

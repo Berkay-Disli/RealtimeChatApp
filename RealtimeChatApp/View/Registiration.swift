@@ -18,6 +18,7 @@ struct Registiration: View {
     @State private var data: Data?
     
     @EnvironmentObject var authVM: AuthViewModel
+    @EnvironmentObject var navVM: NavigationViewModel
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -32,7 +33,7 @@ struct Registiration: View {
             
             VStack(spacing: 40) {
                 #warning("Make the pic selection in another view")
-                
+                #warning("Make so that the user can not register without a profile picture? maybe not.")
                 
                 if let data {
                     if let image = UIImage(data: data) {
@@ -100,6 +101,7 @@ struct Registiration: View {
                 if let data {
                     if let image = UIImage(data: data) {
                         authVM.createAccountWithEmail(email: email, username: username, fullname: fullname, password: password, image: image)
+                        navVM.enableOnboarding()
                     }
                 }
                 
@@ -139,6 +141,7 @@ struct Registiration_Previews: PreviewProvider {
     static var previews: some View {
         Registiration()
             .environmentObject(AuthViewModel())
+            .environmentObject(NavigationViewModel())
     }
 }
 

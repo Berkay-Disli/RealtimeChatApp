@@ -21,7 +21,6 @@ struct BigButton: View {
         .frame(maxWidth: .infinity).frame(height: 60)
         .background(bgColor)
         .cornerRadius(100)
-        .padding(.horizontal)
     }
 }
 

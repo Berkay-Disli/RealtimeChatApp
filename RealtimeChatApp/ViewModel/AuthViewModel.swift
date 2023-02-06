@@ -22,6 +22,7 @@ class AuthViewModel: ObservableObject {
         do {
             try Auth.auth().signOut()
             self.userSession = nil
+            self.userProfileImageUrl = nil
         } catch {
             print(error.localizedDescription)
         }
@@ -42,19 +43,14 @@ class AuthViewModel: ObservableObject {
                         print("CHANGE REQUEST ERROR:\(error.localizedDescription)")
                     }
                 })
-                self.uploadProfileImage(image: image)
+                self.uploadFullUserInfoWithPicture(user: user, email: email, username: username, fullname: fullname, image: image)
                 
-                let userData = ["email": email, "username": username, "fullname": fullname, "photoUrl": Auth.auth().currentUser?.photoURL ?? ""] as [String:Any]
-                Firestore.firestore().collection("users").document(user.uid).setData(userData) { error in
-                    if let error {
-                        print(error.localizedDescription)
-                    } else {
-                        print("User info saved.")
-                    }
-                }
-                self.getUserInfo()
+                
+                
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.userSession = user
+                    self.getUserInfo()
                 }
             }
         }
@@ -71,7 +67,18 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    private func uploadProfileImage(image: UIImage) {
+    private func uploadUserInfoToFirestore(user: User, email: String, username: String, fullname: String, imgUrl: String) {
+        let userData = ["email": email, "username": username, "fullname": fullname, "profilePicUrl": imgUrl] as [String:Any]
+        Firestore.firestore().collection("users").document(user.uid).setData(userData) { error in
+            if let error {
+                print(error.localizedDescription)
+            } else {
+                print("User info saved.")
+            }
+        }
+    }
+    
+    private func uploadFullUserInfoWithPicture(user: User, email: String, username: String, fullname: String, image: UIImage) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Storage.storage().reference(withPath: "userImages/\(uid).jpg")
         guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
@@ -93,6 +100,8 @@ class AuthViewModel: ObservableObject {
                                 print("CHANGE REQUEST ERROR FOR PHOTO URL:\(error.localizedDescription)")
                             }
                         })
+                        
+                        self.uploadUserInfoToFirestore(user: user, email: email, username: username, fullname: fullname, imgUrl: url.absoluteString)
                     }
                 }
             }
@@ -103,9 +112,12 @@ class AuthViewModel: ObservableObject {
         guard let user = userSession else { return }
         
         Firestore.firestore().collection("users").document(user.uid).getDocument { snapshot, error in
-            guard let snapshot, error == nil else { return }
-            if let userProfileImg = snapshot.get("photoUrl") as? URL {
-                self.userProfileImageUrl = userProfileImg
+            guard let snapshot, error == nil else {
+                print("ERROR IN GETUSERINFO \(error?.localizedDescription ?? "error")")
+                return
+            }
+            if let userProfileImg = snapshot.get("profilePicUrl") as? String {
+                self.userProfileImageUrl = URL(string: userProfileImg)
             }
         }
     }

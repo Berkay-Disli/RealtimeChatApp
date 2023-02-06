@@ -11,6 +11,7 @@ struct Login: View {
     @State private var email = ""
     @State private var password = ""
     @EnvironmentObject var authVM: AuthViewModel
+    @EnvironmentObject var navVM: NavigationViewModel
     
     var body: some View {
         NavigationView {
@@ -83,9 +84,6 @@ struct Login: View {
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            Login()
-                
-        }
+        Login()
     }
 }
