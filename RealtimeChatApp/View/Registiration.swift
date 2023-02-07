@@ -100,8 +100,12 @@ struct Registiration: View {
             Button {
                 if let data {
                     if let image = UIImage(data: data) {
-                        authVM.createAccountWithEmail(email: email, username: username, fullname: fullname, password: password, image: image)
-                        navVM.enableOnboarding()
+                        Task {
+                            Task {
+                                await authVM.createAccountWithEmailAsync(email:email, username: username, fullname: fullname, password: password, image: image)
+                                navVM.enableOnboarding()
+                            }
+                        }
                     }
                 }
                 

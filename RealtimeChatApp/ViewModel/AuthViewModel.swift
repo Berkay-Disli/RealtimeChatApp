@@ -18,13 +18,36 @@ class AuthViewModel: ObservableObject {
         self.userSession = Auth.auth().currentUser
     }
     
-    func signOut() {
+    func signOut() throws {
         do {
             try Auth.auth().signOut()
             self.userSession = nil
             self.userProfileImageUrl = nil
         } catch {
             print(error.localizedDescription)
+            throw error
+        }
+    }
+    
+    func createAccountWithEmailAsync(email: String, username: String, fullname: String, password: String, image: UIImage) async {
+        do {
+            // create user with email
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            let user = result.user
+            // create a change request for giving the user a username
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = username
+            try await changeRequest?.commitChanges()
+            
+            // continue with uploaduserinfowithpicture
+            self.uploadFullUserInfoWithPicture(user: user, email: email, username: username, fullname: fullname, image: image)
+            
+            await MainActor.run(body: {
+                self.userSession = user
+                self.getUserInfo()
+            })
+        } catch {
+            print("AUTH ERROR:\(error.localizedDescription)")
         }
     }
     

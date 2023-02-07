@@ -35,8 +35,12 @@ struct Home: View {
             Spacer()
             
             Button {
-                authVM.signOut()
-                navVM.disableOnboarding()
+                do {
+                    try authVM.signOut()
+                    navVM.disableOnboarding()
+                } catch {
+                    print(error.localizedDescription)
+                }
             } label: {
                 BigButton(title: "Sign Out", bgColor: .black, textColor: .white)
             }
