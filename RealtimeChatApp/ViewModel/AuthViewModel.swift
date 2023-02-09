@@ -13,6 +13,7 @@ import UIKit
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var userProfileImageUrl: URL?
+    @Published var loadingAnimation = false
     
     init() {
         self.userSession = Auth.auth().currentUser
@@ -29,8 +30,12 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    // MARK: Async Email Sign Up
     func createAccountWithEmailAsync(email: String, username: String, fullname: String, password: String, image: UIImage) async {
         do {
+            await MainActor.run(body: {
+                self.loadingAnimation = true
+            })
             // create user with email
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             let user = result.user
@@ -40,17 +45,99 @@ class AuthViewModel: ObservableObject {
             try await changeRequest?.commitChanges()
             
             // continue with uploaduserinfowithpicture
-            self.uploadFullUserInfoWithPicture(user: user, email: email, username: username, fullname: fullname, image: image)
+            await self.uploadFullUserInfoWithPictureAsync(user: user, email: email, username: username, fullname: fullname, image: image)
+            
+            try await Task.sleep(for: .seconds(1))
             
             await MainActor.run(body: {
                 self.userSession = user
-                self.getUserInfo()
+            })
+            try await self.getUserInfoAsync()
+            await MainActor.run(body: {
+                self.loadingAnimation = false
             })
         } catch {
             print("AUTH ERROR:\(error.localizedDescription)")
         }
     }
     
+    
+    // MARK: Async Email Sign In
+    func signInWithEmailAsync(email: String, password: String) async {
+        do {
+            await MainActor.run(body: {
+                self.loadingAnimation = true
+            })
+            
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            let user = result.user
+            
+            await MainActor.run(body: {
+                self.userSession = user
+            })
+            
+            await MainActor.run(body: {
+                self.userSession = user
+            })
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    // MARK: Upload User Info to Firestore Async
+    private func uploadUserInfoToFirestoreAsync(user: User, email: String, username: String, fullname: String, imgUrl: String) async {
+        let userData = ["email": email, "username": username, "fullname": fullname, "profilePicUrl": imgUrl] as [String:Any]
+        
+        do {
+            try await Firestore.firestore().collection("users").document(user.uid).setData(userData)
+        } catch {
+            print(error)
+        }
+    }
+    
+    
+    // MARK: Upload Full User Info w/ Picture Async
+    private func uploadFullUserInfoWithPictureAsync(user: User, email: String, username: String, fullname: String, image: UIImage) async {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Storage.storage().reference(withPath: "userImages/\(uid).jpg")
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        do {
+            let _ = try await ref.putDataAsync(imageData)
+            let result = try await ref.downloadURL()
+            let url = result.downloadURL
+            
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.photoURL = url
+            try await changeRequest?.commitChanges()
+            
+            await uploadUserInfoToFirestoreAsync(user: user, email: email, username: username, fullname: fullname, imgUrl: url.absoluteString)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    // MARK: Get User Info Async
+    func getUserInfoAsync() async throws {
+        guard let user = userSession else { return }
+        
+        do {
+            let snapshot = try await Firestore.firestore().collection("users").document(user.uid).getDocument()
+            guard let userProfileImg = snapshot.get("profilePicUrl") as? String else { return }
+            
+            await MainActor.run(body: {
+                self.userProfileImageUrl = URL(string: userProfileImg)
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
+    // MARK: Old Codes Below!
+    // MARK: Async versions are above
+    
+    /*
     func createAccountWithEmail(email: String, username: String, fullname: String, password: String, image: UIImage) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error {
@@ -144,4 +231,6 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
+    
+    */
 }

@@ -44,7 +44,10 @@ struct Login: View {
                 
                 
                 Button {
-                    authVM.signInWithEmail(email: email, password: password)
+                    //authVM.signInWithEmail(email: email, password: password)
+                    Task {
+                        await authVM.signInWithEmailAsync(email: email, password: password)
+                    }
                 } label: {
                     Text("Sign In")
                         .font(.headline)
@@ -74,6 +77,12 @@ struct Login: View {
                 }
             }
             .padding()
+            .overlay {
+                if authVM.loadingAnimation {
+                    ProgressView()
+                        .transition(AnyTransition.opacity.animation(.easeInOut))
+                }
+            }
             //.padding(.top, -90) // Had to do it.
         }
         .toolbar(.hidden)

@@ -138,6 +138,12 @@ struct Registiration: View {
             .toolbar(.hidden, for: .navigationBar)
         }
         .padding()
+        .overlay {
+            if authVM.loadingAnimation {
+                ProgressView()
+                    .transition(AnyTransition.opacity.animation(.easeInOut))
+            }
+        }
     }
 }
 
