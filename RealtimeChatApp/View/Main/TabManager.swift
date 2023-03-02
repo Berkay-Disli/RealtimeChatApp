@@ -52,7 +52,7 @@ struct TabManager: View {
                             }
                         }
                     }
-                    .background(.ultraThinMaterial)
+                    .background(.regularMaterial)
                 }
                 
                 

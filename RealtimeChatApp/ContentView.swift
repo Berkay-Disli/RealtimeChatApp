@@ -17,7 +17,7 @@ struct ContentView: View {
                 OnboardingView(fullname: authVM.userSession?.displayName ?? "user")
                     .transition(AnyTransition.opacity.animation(.easeInOut))
             } else {
-                Home()
+                TabManager()
                     .transition(AnyTransition.opacity.animation(.easeInOut))
             }
         } else {

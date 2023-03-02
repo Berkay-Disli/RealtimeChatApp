@@ -41,9 +41,9 @@ struct Login: View {
                     Text("Forgot Password?")
                         .font(.system(size: 13)).fontWeight(.semibold)
                         .foregroundColor(primaryColor)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
                         .padding()
                 }
+                .frame(maxWidth: .infinity, alignment: .trailing)
 
                 
                 
