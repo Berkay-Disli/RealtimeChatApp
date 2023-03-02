@@ -146,6 +146,23 @@ class AuthViewModel: ObservableObject {
         })
     }
     
+    func deleteUser() async throws {
+        guard let uid = userSession?.uid else { return }
+        
+        let ref = Storage.storage().reference(withPath: "userImages/\(uid).jpg")
+        do {
+            try await ref.delete()
+            try await Firestore.firestore().collection("users").document(uid).delete()
+            try await Auth.auth().currentUser?.delete()
+        } catch {
+            print(error.localizedDescription)
+            throw error
+        }
+        
+    }
+    
+    
+    
     // MARK: Old Codes Below!
     // MARK: Async versions are above
     

@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct NewPostView: View {
+    @EnvironmentObject var authVM: AuthViewModel
+    
     var body: some View {
-        Text("New Post")
-            .vAlign(.center)
+        NavigationView {
+            VStack {
+                Text("New Post View will be here 😏")
+            }
+            .vAlign(.center).hAlign(.center)
+            .background(Color("bg"))
+            .navigationTitle("New Post")
+        }
     }
 }
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPostView()
+        TabManager()
+            .environmentObject(NavigationViewModel())
+            .environmentObject(AuthViewModel())
     }
 }

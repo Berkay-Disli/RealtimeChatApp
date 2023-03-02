@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var authVM: AuthViewModel
+    
     var body: some View {
-        Text("Settings")
-            .vAlign(.center)
+        NavigationView {
+            VStack {
+                Text("Settings will be here 😏")
+            }
+            .vAlign(.center).hAlign(.center)
+            .background(Color("bg"))
+            .navigationTitle("Settings")
+        }
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        TabManager()
+            .environmentObject(NavigationViewModel())
+            .environmentObject(AuthViewModel())
     }
 }
