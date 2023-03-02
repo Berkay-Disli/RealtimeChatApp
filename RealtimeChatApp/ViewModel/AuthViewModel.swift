@@ -14,6 +14,8 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var userProfileImageUrl: URL?
     @Published var loadingAnimation = false
+    @Published var showError = false
+    @Published var errorMessage = ""
     
     init() {
         self.userSession = Auth.auth().currentUser
@@ -31,7 +33,7 @@ class AuthViewModel: ObservableObject {
     }
     
     // MARK: Async Email Sign Up
-    func createAccountWithEmailAsync(email: String, username: String, fullname: String, password: String, image: UIImage) async {
+    func createAccountWithEmailAsync(email: String, username: String, fullname: String, password: String, image: UIImage) async throws {
         do {
             await MainActor.run(body: {
                 self.loadingAnimation = true
@@ -58,12 +60,13 @@ class AuthViewModel: ObservableObject {
             })
         } catch {
             print("AUTH ERROR:\(error.localizedDescription)")
+            throw error
         }
     }
     
     
     // MARK: Async Email Sign In
-    func signInWithEmailAsync(email: String, password: String) async {
+    func signInWithEmailAsync(email: String, password: String) async throws {
         do {
             await MainActor.run(body: {
                 self.loadingAnimation = true
@@ -81,6 +84,7 @@ class AuthViewModel: ObservableObject {
             })
         } catch {
             print(error.localizedDescription)
+            throw error
         }
     }
     
@@ -132,6 +136,14 @@ class AuthViewModel: ObservableObject {
         } catch {
             print(error)
         }
+    }
+    
+    func setError(_ error: Error) async {
+        await MainActor.run(body: {
+            errorMessage = error.localizedDescription
+            showError.toggle()
+            loadingAnimation = false
+        })
     }
     
     // MARK: Old Codes Below!

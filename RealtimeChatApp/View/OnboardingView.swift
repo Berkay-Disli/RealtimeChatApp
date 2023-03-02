@@ -15,10 +15,14 @@ struct OnboardingView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text("Hey \(fullname)")
             Text("Welcome to ChatApp")
+                .fontWeight(.medium)
+                .foregroundColor(Color("pri"))
         }
         .font(.title)
         .hAlign(.leading)
+        .vAlign(.center)
         .padding(.horizontal)
+        .background(Color("bg"))
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 navVM.disableOnboarding()

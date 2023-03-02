@@ -49,7 +49,9 @@ struct Home: View {
         }
         .padding(.horizontal)
         .onAppear {
-            authVM.getUserInfo()
+            Task {
+                try? await authVM.getUserInfoAsync()
+            }
         }
     }
 }

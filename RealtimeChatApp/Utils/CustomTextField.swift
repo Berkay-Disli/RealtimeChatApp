@@ -12,6 +12,7 @@ struct CustomTextField: View {
     let placeholder: String
     @Binding var text: String
     let isSecure: Bool
+    let textContentType: UITextContentType?
     
     var body: some View {
         VStack(spacing: 16) {
@@ -29,6 +30,7 @@ struct CustomTextField: View {
                     TextField(placeholder, text: $text)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
+                        .textContentType(textContentType)
                 }
             }
             Divider()
@@ -39,6 +41,6 @@ struct CustomTextField: View {
 
 struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTextField(image: "envelope", placeholder: "email", text: .constant(""), isSecure: false)
+        CustomTextField(image: "envelope", placeholder: "email", text: .constant(""), isSecure: false, textContentType: .emailAddress)
     }
 }

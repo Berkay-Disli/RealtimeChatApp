@@ -23,13 +23,16 @@ struct Registiration: View {
     
     var body: some View {
         VStack {
+            let primaryColor = Color("pri")
+            
             VStack(alignment: .leading) {
                 Text("Get started.")
                 Text("Create your account.")
-                    .foregroundColor(.orange)
+                    .foregroundColor(primaryColor)
             }
             .font(.largeTitle).bold()
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top)
             
             VStack(spacing: 40) {
                 #warning("Make the pic selection in another view")
@@ -45,7 +48,7 @@ struct Registiration: View {
                                 .frame(width: 140, height: 140)
                                 .overlay {
                                     Circle()
-                                        .stroke(LinearGradient(colors: [.orange, .orange, .orange, .black], startPoint: .top, endPoint: .bottom), lineWidth: 3)
+                                        .stroke(LinearGradient(colors: [primaryColor, primaryColor, primaryColor, .black], startPoint: .top, endPoint: .bottom), lineWidth: 3)
                                         .frame(width: 140, height: 140)
                                 }
                         }.onChange(of: selectedItem) { newValue in
@@ -89,11 +92,11 @@ struct Registiration: View {
                 }
                 
                 
-                CustomTextField(image: "envelope", placeholder: "email", text: $email, isSecure: false)
+                CustomTextField(image: "envelope", placeholder: "email", text: $email, isSecure: false, textContentType: .emailAddress)
                     .keyboardType(.emailAddress)
-                CustomTextField(image: "person", placeholder: "username", text: $username, isSecure: false)
-                CustomTextField(image: "person", placeholder: "fullname", text: $fullname, isSecure: false)
-                CustomTextField(image: "lock", placeholder: "password", text: $password, isSecure: true)
+                CustomTextField(image: "person", placeholder: "username", text: $username, isSecure: false, textContentType: .username)
+                CustomTextField(image: "person", placeholder: "fullname", text: $fullname, isSecure: false, textContentType: .name)
+                CustomTextField(image: "lock", placeholder: "password", text: $password, isSecure: true, textContentType: nil)
             }
             .padding([.horizontal], 32)
             
@@ -101,9 +104,11 @@ struct Registiration: View {
                 if let data {
                     if let image = UIImage(data: data) {
                         Task {
-                            Task {
-                                await authVM.createAccountWithEmailAsync(email:email, username: username, fullname: fullname, password: password, image: image)
+                            do {
+                                try await authVM.createAccountWithEmailAsync(email:email, username: username, fullname: fullname, password: password, image: image)
                                 navVM.enableOnboarding()
+                            } catch {
+                                await authVM.setError(error)
                             }
                         }
                     }
@@ -115,7 +120,7 @@ struct Registiration: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(height: 50)
-                    .background(.orange)
+                    .background(primaryColor)
                     .clipShape(Capsule())
                     .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 5)
                     .padding(.horizontal).padding(.top, 24)
@@ -133,17 +138,19 @@ struct Registiration: View {
                     Text("Sign in.")
                         .font(.system(size: 14)).fontWeight(.semibold)
                 }
-                .foregroundColor(.black)
+                .foregroundColor(primaryColor)
             }
             .toolbar(.hidden, for: .navigationBar)
         }
         .padding()
+        .background(Color("bg"))
         .overlay {
             if authVM.loadingAnimation {
                 ProgressView()
                     .transition(AnyTransition.opacity.animation(.easeInOut))
             }
         }
+        .alert(authVM.errorMessage, isPresented: $authVM.showError, actions: {})
     }
 }
 
